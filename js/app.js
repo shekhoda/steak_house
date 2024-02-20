@@ -178,15 +178,15 @@
                     I = L < 1 || L > w,
                     k = I ? (L < 1 ? -1 : 1) : 0,
                     _ = I && !l,
-                    P = _ ? "" : M.getDate(),
-                    D = +M == +r,
+                    D = _ ? "" : M.getDate(),
+                    P = +M == +r,
                     $ = T === h[0] || T === h[1],
                     z = g !== m,
                     B = "qs-square " + O;
                   A && !_ && (B += " qs-event"),
                     I && (B += " qs-outside-current-month"),
                     (!l && I) || (B += " qs-num"),
-                    D && (B += " qs-active"),
+                    P && (B += " qs-active"),
                     (d[+M] ||
                       t.disabler(M) ||
                       ($ && t.noWeekends) ||
@@ -198,14 +198,14 @@
                     +M === g && m && z && (B += " qs-range-start"),
                     +M > g && +M < m && (B += " qs-range-middle"),
                     +M === m && g && z && (B += " qs-range-end"),
-                    _ && ((B += " qs-empty"), (P = "")),
+                    _ && ((B += " qs-empty"), (D = "")),
                     x.push(
                       '<div class="' +
                         B +
                         '" data-direction="' +
                         k +
                         '">' +
-                        P +
+                        D +
                         "</div>"
                     );
                 }
@@ -455,8 +455,8 @@
                         : 27 === t && _ && l && C(!0, a);
                     } else if ("input" === s) {
                       if (!a || !a.calendar.contains(n)) return;
-                      var P = a.calendar.querySelector(".qs-submit"),
-                        D = n.value
+                      var D = a.calendar.querySelector(".qs-submit"),
+                        P = n.value
                           .split("")
                           .reduce(function (e, t) {
                             return e || "0" !== t
@@ -464,8 +464,8 @@
                               : "";
                           }, "")
                           .slice(0, 4);
-                      (n.value = D),
-                        P.classList[4 === D.length ? "remove" : "add"](
+                      (n.value = P),
+                        D.classList[4 === P.length ? "remove" : "add"](
                           "qs-disabled"
                         );
                     }
@@ -485,7 +485,7 @@
               function _() {
                 x(this);
               }
-              function P(e, t) {
+              function D(e, t) {
                 var s = S(e),
                   i = this.currentYear,
                   n = this.currentMonth,
@@ -520,7 +520,7 @@
                   o || t ? u(this, s) : o || u(this, new Date(i, n, 1)), this
                 );
               }
-              function D(e) {
+              function P(e) {
                 return z(this, e, !0);
               }
               function $(e) {
@@ -844,9 +844,9 @@
                     currentYear: (c.startDate || c.dateSelected).getFullYear(),
                     events: c.events || {},
                     defaultView: c.defaultView,
-                    setDate: P,
+                    setDate: D,
                     remove: N,
-                    setMin: D,
+                    setMin: P,
                     setMax: $,
                     show: k,
                     hide: _,
@@ -2898,7 +2898,7 @@
             A,
             I = function (e) {
               if (e === f && $) return $;
-              if (!w && e in P) return P[e];
+              if (!w && e in D) return D[e];
               switch (e) {
                 case x:
                 case E:
@@ -2913,10 +2913,10 @@
             },
             k = t + " Iterator",
             _ = !1,
-            P = e.prototype,
-            D = P[S] || P["@@iterator"] || (f && P[f]),
-            $ = (!w && D) || I(f),
-            z = ("Array" == t && P.entries) || D;
+            D = e.prototype,
+            P = D[S] || D["@@iterator"] || (f && D[f]),
+            $ = (!w && P) || I(f),
+            z = ("Array" == t && D.entries) || P;
           if (
             (z &&
               (L = c(z.call(new e()))) !== Object.prototype &&
@@ -2926,21 +2926,21 @@
               r && (g[k] = T)),
             v &&
               f == E &&
-              D &&
-              D.name !== E &&
+              P &&
+              P.name !== E &&
               (!r && y
-                ? h(P, "name", E)
+                ? h(D, "name", E)
                 : ((_ = !0),
                   ($ = function () {
-                    return n(D, this);
+                    return n(P, this);
                   }))),
             f)
           )
             if (((M = { values: I(E), keys: m ? $ : I(x), entries: I(C) }), O))
-              for (A in M) (w || _ || !(A in P)) && p(P, A, M[A]);
+              for (A in M) (w || _ || !(A in D)) && p(D, A, M[A]);
             else i({ target: t, proto: !0, forced: w || _ }, M);
           return (
-            (r && !O) || P[S] === $ || p(P, S, $, { name: f }), (g[t] = $), M
+            (r && !O) || D[S] === $ || p(D, S, $, { name: f }), (g[t] = $), M
           );
         };
       },
@@ -4126,20 +4126,20 @@
                 for (var M, A = "", I = 0, k = 0; k < O.length; k++) {
                   for (
                     var _ = p((L = O[k])[0]),
-                      P = w(S(u(L.index), a.length), 0),
-                      D = [],
+                      D = w(S(u(L.index), a.length), 0),
+                      P = [],
                       $ = 1;
                     $ < L.length;
                     $++
                   )
-                    E(D, void 0 === (M = L[$]) ? M : String(M));
+                    E(P, void 0 === (M = L[$]) ? M : String(M));
                   var z = L.groups;
                   if (f) {
-                    var B = x([_], D, P, a);
+                    var B = x([_], P, D, a);
                     void 0 !== z && E(B, z);
                     var N = p(i(n, void 0, B));
-                  } else N = v(_, a, P, D, z, n);
-                  P >= I && ((A += T(a, I, P) + N), (I = P + _.length));
+                  } else N = v(_, a, D, P, z, n);
+                  D >= I && ((A += T(a, I, D) + N), (I = D + _.length));
                 }
                 return A + T(a, I);
               },
@@ -4414,13 +4414,13 @@
             _ = function (e) {
               return e.llTempImage;
             },
-            P = function (e, t) {
+            D = function (e, t) {
               if (t) {
                 var s = t._observer;
                 s && s.unobserve(e);
               }
             },
-            D = function (e, t) {
+            P = function (e, t) {
               e && (e.loadingCount += t);
             },
             $ = function (e, t) {
@@ -4474,13 +4474,13 @@
               I(e, t.class_applied),
                 C(e, v),
                 s &&
-                  (t.unobserve_completed && P(e, t),
+                  (t.unobserve_completed && D(e, t),
                   A(t.callback_applied, e, s));
             },
             U = function (e, t, s) {
               I(e, t.class_loading),
                 C(e, g),
-                s && (D(s, 1), A(t.callback_loading, e, s));
+                s && (P(s, 1), A(t.callback_loading, e, s));
             },
             K = function (e, t, s) {
               s && e.setAttribute(t, s);
@@ -4548,12 +4548,12 @@
               !(function (e) {
                 delete e.llTempImage;
               })(e),
-                D(s, -1),
+                P(s, -1),
                 (function (e) {
                   e && (e.toLoadCount -= 1);
                 })(s),
                 k(e, t.class_loading),
-                t.unobserve_completed && P(e, s);
+                t.unobserve_completed && D(e, s);
             },
             oe = function (e, t, s) {
               var i = _(e) || e;
@@ -4709,7 +4709,7 @@
                         I(e, s.class_entered),
                         k(e, s.class_exited),
                         (function (e, t, s) {
-                          t.unobserve_entered && P(e, s);
+                          t.unobserve_entered && D(e, s);
                         })(e, s, i),
                         A(s.callback_enter, e, t, i),
                         n || ae(e, s, i);
@@ -4732,7 +4732,7 @@
                             })(e),
                             ce(e),
                             k(e, s.class_loading),
-                            D(i, -1),
+                            P(i, -1),
                             T(e),
                             A(s.callback_cancel, e, t, i));
                         })(e, t, s, i),
@@ -4843,7 +4843,7 @@
                 var t = this,
                   s = this._settings;
                 ye(e, s).forEach(function (e) {
-                  P(e, t), ae(e, s, t);
+                  D(e, t), ae(e, s, t);
                 });
               },
               restoreAll: function () {
@@ -6602,7 +6602,7 @@
       function _() {
         return Date.now();
       }
-      function P(e, t = "x") {
+      function D(e, t = "x") {
         const s = x();
         let i, n, r;
         const o = (function (e) {
@@ -6649,7 +6649,7 @@
           n || 0
         );
       }
-      function D(e) {
+      function P(e) {
         return (
           "object" == typeof e &&
           null !== e &&
@@ -6675,11 +6675,11 @@
                 n = Object.getOwnPropertyDescriptor(r, i);
               void 0 !== n &&
                 n.enumerable &&
-                (D(t[i]) && D(r[i])
+                (P(t[i]) && P(r[i])
                   ? r[i].__swiper__
                     ? (t[i] = r[i])
                     : $(t[i], r[i])
-                  : !D(t[i]) && D(r[i])
+                  : !P(t[i]) && P(r[i])
                   ? ((t[i] = {}),
                     r[i].__swiper__ ? (t[i] = r[i]) : $(t[i], r[i]))
                   : (t[i] = r[i]));
@@ -7416,7 +7416,7 @@
           } = this;
           if (t.virtualTranslate) return s ? -i : i;
           if (t.cssMode) return i;
-          let r = P(n[0], e);
+          let r = D(n[0], e);
           return s && (r = -r), r || 0;
         },
         setTranslate: function (e, t) {
@@ -10312,6 +10312,7 @@
                 spaceBetween: 0,
                 autoHeight: !1,
                 speed: 1e3,
+                grabCursor: !0,
                 loop: !0,
                 preloadImages: !1,
                 lazy: { loadPrevNext: !0 },
@@ -10401,13 +10402,13 @@
         Ie = s(773),
         ke = s.n(Ie),
         _e = [],
-        Pe = "ResizeObserver loop completed with undelivered notifications.";
+        De = "ResizeObserver loop completed with undelivered notifications.";
       !(function (e) {
         (e.BORDER_BOX = "border-box"),
           (e.CONTENT_BOX = "content-box"),
           (e.DEVICE_PIXEL_CONTENT_BOX = "device-pixel-content-box");
       })(Ee || (Ee = {}));
-      var De,
+      var Pe,
         $e = function (e) {
           return Object.freeze(e);
         },
@@ -10616,13 +10617,13 @@
               (function () {
                 var e;
                 "function" == typeof ErrorEvent
-                  ? (e = new ErrorEvent("error", { message: Pe }))
+                  ? (e = new ErrorEvent("error", { message: De }))
                   : ((e = document.createEvent("Event")).initEvent(
                       "error",
                       !1,
                       !1
                     ),
-                    (e.message = Pe)),
+                    (e.message = De)),
                   window.dispatchEvent(e);
               })(),
             e > 0
@@ -10630,7 +10631,7 @@
         },
         st = [],
         it = function (e) {
-          if (!De) {
+          if (!Pe) {
             var t = 0,
               s = document.createTextNode("");
             new MutationObserver(function () {
@@ -10638,11 +10639,11 @@
                 return e();
               });
             }).observe(s, { characterData: !0 }),
-              (De = function () {
+              (Pe = function () {
                 s.textContent = "".concat(t ? t-- : t++);
               });
           }
-          st.push(e), De();
+          st.push(e), Pe();
         },
         nt = 0,
         rt = { attributes: !0, characterData: !0, childList: !0, subtree: !0 },
@@ -11814,8 +11815,8 @@
         It = "lgContainerResize",
         kt = "lgUpdateSlides",
         _t = "lgAfterAppendSubHtml",
-        Pt = "lgBeforeOpen",
-        Dt = "lgAfterOpen",
+        Dt = "lgBeforeOpen",
+        Pt = "lgAfterOpen",
         $t = "lgSlideItemLoad",
         zt = "lgBeforeSlide",
         Bt = "lgAfterSlide",
@@ -12902,7 +12903,7 @@
                   s.outer.addClass("lg-components-open");
                 }, d),
                   (this.index = e),
-                  this.LGel.trigger(Pt),
+                  this.LGel.trigger(Dt),
                   this.getSlideItem(e).addClass("lg-current"),
                   (this.lGalleryOn = !1),
                   (this.prevScrollTop = Xt(window).scrollTop()),
@@ -12937,7 +12938,7 @@
                           s.outer.addClass("lg-visible");
                         }, s.settings.backdropDuration),
                       s.slide(e, !1, !1, !1),
-                      s.LGel.trigger(Dt);
+                      s.LGel.trigger(Pt);
                   }),
                   document.body === this.settings.container &&
                     Xt("html").addClass("lg-on");
@@ -14058,7 +14059,31 @@
           t.forEach((e) => {
             e.insertAdjacentHTML("beforeend", '<div class="bg-item"></div>');
           });
-        us("[data-calendar]", {});
+        us("[data-calendar]", {
+          customDays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вск"],
+          customMonths: [
+            "Январь",
+            "Февраль",
+            "Март",
+            "Апрель",
+            "Май",
+            "Июнь",
+            "Июль",
+            "Август",
+            "Сентябрь",
+            "Октябрь",
+            "Ноябрь",
+            "Декабрь",
+          ],
+          formatter: (e, t, s) => {
+            const i = t.toLocaleDateString();
+            e.value = i;
+          },
+          dateSelected: new Date(),
+          maxDate: new Date(2099, 0, 1),
+          minDate: new Date(),
+          startDate: new Date(),
+        });
         if (document.querySelector(".video-module")) {
           document.addEventListener("watcherCallback", function (e) {
             const t = e.detail.entry,
